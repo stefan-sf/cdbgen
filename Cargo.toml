@@ -1,0 +1,30 @@
+[package]
+name = "cdbgen"
+version = "0.1.0"
+authors = ["Stefan Schulze Frielinghaus <cdbgen@stefansf.de>"]
+description = "This tool generates a compilation database"
+license = "GPL-3.0-or-later"
+categories = ["command-line-utilities", "development-tools"]
+keywords = ["compilation-database", "make", "build-tool", "build-system"]
+repository = "https://github.com/stefan-sf/cdbgen"
+readme = "README.md"
+edition = "2021"
+rust-version = "1.58"
+
+[dependencies]
+libc = "0.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+which = "4.3"
+
+[target.'cfg(windows)'.dependencies.windows]
+version = "0.39"
+features = [
+    "Win32_Storage_FileSystem",
+    "Win32_Foundation",
+    "Win32_System_IO",
+]
+
+[dev-dependencies]
+assert_cmd = "2.0"
+assert_fs = "1.0"
